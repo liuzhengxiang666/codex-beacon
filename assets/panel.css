@@ -221,7 +221,6 @@ h1 { font-size: 22px; font-weight: 700; line-height: 1.45; text-wrap: balance; o
 .runtime-dot[data-state="blocked"], .runtime-dot[data-state="error"], .runtime-dot[data-state="failed"] { background: var(--blocked-ink); }
 .runtime-dot[data-state="waiting"], .runtime-dot[data-state="waiting_user"], .runtime-dot[data-state="disconnected"] { background: var(--hold-ink); }
 #last-updated { font-variant-numeric: tabular-nums; }
-.mode-note { padding: 4px 8px 0; color: var(--plan-muted); font-size: 11px; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 @media (max-width: 370px) {
   #execution-panel { padding: 12px; }

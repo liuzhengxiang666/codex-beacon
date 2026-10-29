@@ -5,7 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 
-VERSION = "0.5.1"
+VERSION = "0.5.3"
 RESOURCE = "ui://codex-execution-panel/panel.html"
 INSTRUCTIONS = (
     "When implementing a user-approved plan, initialize set_execution_plan once with 4-8 "
@@ -85,9 +85,9 @@ def definitions():
     readonly = {"readOnlyHint": True, "destructiveHint": False, "openWorldHint": False}
     local_write = {"readOnlyHint": False, "destructiveHint": False, "openWorldHint": False}
     return [
-        {"name": "open_execution_panel", "title": "执行进度", "description": "Open the current task execution panel.",
+        {"name": "open_execution_panel", "title": "Beacon 执行进度", "description": "Open the current task execution panel.",
          "inputSchema": obj(), "annotations": readonly, "_meta": ui_meta(True, True)},
-        {"name": "show_execution_panel", "title": "显示执行面板", "description": "Show the execution panel for the exact current task.",
+        {"name": "show_execution_panel", "title": "显示 Beacon 执行面板", "description": "Show the execution panel for the exact current task.",
          "inputSchema": obj({"sessionId": SESSION}), "annotations": readonly, "_meta": ui_meta()},
         {"name": "list_execution_sessions", "description": "Choose a local task when the host supplies no task identity.",
          "inputSchema": obj(), "annotations": readonly, "_meta": {"ui": {"visibility": ["app"]}, "openai/visibility": "private"}},
@@ -273,7 +273,7 @@ class PanelAPI:
             except (ValueError, KeyError, TypeError) as error:
                 return result({"error": str(error)[:500]}, True)
         if method == "resources/list":
-            return {"resources": [{"uri": RESOURCE, "name": "执行进度", "mimeType": "text/html;profile=mcp-app"}]}
+            return {"resources": [{"uri": RESOURCE, "name": "Beacon 执行进度", "mimeType": "text/html;profile=mcp-app"}]}
         if method == "resources/templates/list":
             return {"resourceTemplates": []}
         if method == "resources/read":

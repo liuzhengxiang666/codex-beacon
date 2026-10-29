@@ -2,7 +2,7 @@
 
 ## 中文短帖
 
-我给 Codex 做了一个开源执行侧栏：**Codex Execution Panel**。
+我给 Codex 做了一个开源执行侧栏：**Codex Beacon**。
 
 起因很简单：长任务跑起来后，我不想再隔几分钟问一次“你做到哪了”。
 
@@ -10,7 +10,7 @@
 
 目前是 Preview，Windows 原生客户端已实测，进度由 Agent 上报；其他平台的适配和英文界面欢迎一起完善。
 
-源码：https://github.com/liuzhengxiang666/codex-execution-panel
+源码：https://github.com/liuzhengxiang666/codex-beacon
 
 欢迎试用、提问题，也欢迎贡献你觉得真正有用的改进。
 
@@ -18,11 +18,11 @@
 
 I built an open-source execution sidebar for Codex because I kept asking: “What step are we on?”
 
-Codex Execution Panel shows major plan steps, overall progress, blockers and pending verification beside the conversation. Click @ on any step to bring its context into your current draft, then add your instructions and send when ready.
+Codex Beacon shows major plan steps, overall progress, blockers and pending verification beside the conversation. Click @ on any step to bring its context into your current draft, then add your instructions and send when ready.
 
 It's a local MCP app, with agent-reported progress and no automatic message sending. This is an early preview, manually verified on a Windows desktop host. Compatibility reports and contributions are welcome.
 
-https://github.com/liuzhengxiang666/codex-execution-panel
+https://github.com/liuzhengxiang666/codex-beacon
 
 ## 录屏建议
 

@@ -1,5 +1,7 @@
 # 安装与排障 / Installation
 
+产品名为 **Codex Beacon**（原 Codex Execution Panel），显示名为 **Beacon 执行面板**。仓库地址改为 `liuzhengxiang666/codex-beacon`；兼容标识仍为 MCP `execution-panel`、marketplace `codex-execution-panel`、插件/技能 `execution-panel`。无需改已有源码文件夹名、资源 URI 或迁移 `state/`。
+
 ## 环境与兼容性
 
 | 环境 | 状态 |
@@ -16,8 +18,8 @@
 ## 1. 克隆
 
 ```sh
-git clone https://github.com/liuzhengxiang666/codex-execution-panel.git
-cd codex-execution-panel
+git clone https://github.com/liuzhengxiang666/codex-beacon.git
+cd codex-beacon
 ```
 
 克隆到你希望存放源码和运行状态的位置。默认数据库位于这个目录的 `state/`；不要把源码放入只读目录。
@@ -68,15 +70,30 @@ codex plugin list --marketplace codex-execution-panel --json
 
 重新加载 MCP；宿主没有重载入口时，关闭并重新打开客户端。当前已运行的 Python stdio 进程不会自动加载新的 Python 协议代码。重新打开面板实例可以读取最新 UI 资源。
 
-## 4. 验证实际效果
+## 4. 首次设置与实际触发
 
-在同一聊天中调用 @执行面板，或说“使用执行面板执行这个多步任务……”。检查：
+Windows 注册脚本会在首次运行时提供一次默认方式选择：多步任务自动开（推荐）、每次询问、手动开；已有设置会保留。也可显式运行 `./scripts/register-mcp.ps1 -PanelMode auto`。其他平台或以后更改设置：
+
+```sh
+python scripts/configure-panel.py --mode auto
+python scripts/configure-panel.py --show
+```
+
+`auto`、`ask`、`manual` 保存在现有用户级 `AGENTS.md`（尊重 `CODEX_HOME`）；修改前备份到被忽略的 `work/config-backups/`，不会修改仓库规则。无明确选择时不替用户默认同意。
+
+多步按实际工作判断：包括先读取多个聊天、核对进度，再汇总工作安排；也包括资料检索、比较与研究。直接可答的简短问答不自动开。即使不调用 `update_plan`，检索工具前也会重新提醒检查。
+
+0.5.3 包含 SessionStart、UserPromptSubmit 和 PreToolUse 生命周期 hooks；请在 CLI `/hooks` 正常审核信任。更新定义需重新审核，脚本不会手写信任哈希。hook 注入执行提醒，由 Agent 调用既有 MCP；不等于宿主强制挂载，未实际出现右栏时仍算未通过，不承诺所有客户端必定自动展开。
+
+### 验证实际效果
+
+保存 auto 后，不用 @，在同一聊天要求“读取最近多个聊天，核对待办并总结未来几天安排”。检查：
 
 - 面板实际出现在右侧，主对话仍可继续；只看到工具调用行不代表右栏打开成功。
 - 计划节点来自当前任务，完成更新后百分比刷新。
 - 节点旁 @ 可以带入当前草稿；由你手动发送。无草稿能力时只复制，不能新建聊天。
 
-插件技能为已授权的多步执行任务请求默认展示；普通问答不用打开。它不修改用户全局 `AGENTS.md` 或保存第二份偏好库；个人显式选择优先。
+技能和 hook 复用同一用户偏好；配置脚本只在明确选择后保存用户级 AGENTS.md，不创建第二份偏好库。当前聊天显式关闭优先。
 
 ## 常见情况
 
@@ -91,6 +108,17 @@ codex plugin list --marketplace codex-execution-panel --json
 | Goal 暂停后状态不一致 | 面板没有独立订阅 Goal 生命周期；以原生 Goal 状态为准 |
 
 ## 更新与卸载
+
+已有克隆可继续使用原目录，不要为了更名移动运行中的源码。建议更新远端后拉取：
+
+```sh
+git remote set-url origin https://github.com/liuzhengxiang666/codex-beacon.git
+git pull --ff-only
+codex plugin marketplace add .
+codex plugin add execution-panel@codex-execution-panel
+```
+
+新的 hooks 定义需要在 `/hooks` 重新审核信任。是否自动请求面板以原有偏好为准；更新不会替你改成 auto。
 
 更新先 `git pull`，重新加载 MCP；技能有改动时运行 `codex plugin add execution-panel@codex-execution-panel` 刷新。源码目录移动后重新注册服务器路径。更新不会主动清空 `state/`。
 

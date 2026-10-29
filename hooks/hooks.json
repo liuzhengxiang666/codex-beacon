@@ -1,0 +1,41 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -X utf8 -B -c \"import os,runpy;runpy.run_path(os.path.join(os.environ['PLUGIN_ROOT'],'hooks','auto_panel.py'),run_name='__main__')\"",
+            "timeout": 3,
+            "statusMessage": "Checking execution panel policy"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -X utf8 -B -c \"import os,runpy;runpy.run_path(os.path.join(os.environ['PLUGIN_ROOT'],'hooks','auto_panel.py'),run_name='__main__')\"",
+            "timeout": 3,
+            "statusMessage": "Checking task panel activation"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -X utf8 -B -c \"import os,runpy;runpy.run_path(os.path.join(os.environ['PLUGIN_ROOT'],'hooks','auto_panel.py'),run_name='__main__')\"",
+            "timeout": 3,
+            "statusMessage": "Checking actual multi-step work"
+          }
+        ]
+      }
+    ]
+  }
+}
