@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([switch]$DryRun)
+param([switch]$DryRun, [ValidateSet('auto','ask','manual')][string]$PanelMode)
 
 $ErrorActionPreference = 'Stop'
 $panelRoot = Split-Path -Parent $PSScriptRoot
@@ -13,6 +13,9 @@ if ($DryRun) {
     [pscustomobject]@{ Command = $panelCodex; Arguments = $panelArguments; StateDirectory = (Join-Path $panelRoot 'state') }
     return
 }
+$panelSetup = Join-Path $panelRoot 'scripts/configure-panel.py'
+if ($PanelMode) { & $panelPython -B $panelSetup --mode $PanelMode } else { & $panelPython -B $panelSetup }
+if ($LASTEXITCODE -ne 0) { throw 'Execution-panel preference was not configured. Registration was not changed.' }
 New-Item -ItemType Directory -Path $panelTemp -Force | Out-Null
 $panelConfigRoot = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USERPROFILE '.codex' }
 $panelConfig = Join-Path $panelConfigRoot 'config.toml'

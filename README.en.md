@@ -1,12 +1,22 @@
-# Codex Execution Panel
+# Codex Beacon
 
 **See the progress. Reference any step. Stay in the conversation.**
 
 A community-built, open-source MCP sidebar for Codex. Track major plan milestones, distinguish blockers from pending verification, and bring any step into your current chat draft with **@**.
 
-[中文](README.md) · [Installation](docs/installation.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/liuzhengxiang666/codex-execution-panel/issues)
+[中文](README.md) · [Installation](docs/installation.md) · [Contributing](CONTRIBUTING.md) · [Issues](https://github.com/liuzhengxiang666/codex-beacon/issues)
 
-**Preview · v0.5.1.** The UI is currently Chinese. Windows desktop is the primary manually verified environment; other clients and platforms need testing. This project is not affiliated with OpenAI.
+**Preview · v0.5.3.** The UI is currently Chinese. Windows desktop is the primary manually verified environment; other clients and platforms need testing. This project is not affiliated with OpenAI.
+
+Previously **Codex Execution Panel**. The repository is now `codex-beacon`; the display name is **Beacon 执行面板**. Existing MCP, marketplace and skill IDs remain unchanged, so installed users do not need a second server or a data migration.
+
+## What's new in v0.5.3
+
+- Choose `auto`, `ask` or `manual` once; preferences are stored in the existing user-level `AGENTS.md`.
+- Lifecycle hooks remind the agent to assess actual multi-step work, including research and cross-chat review. They supply context; they do not imperatively mount host UI.
+- Beacon branding and a quieter footer, with existing node references and state compatibility preserved.
+
+<p align="center"><img src="docs/images/beacon-dark.jpg" width="420" alt="Actual v0.5.3 viewer running isolated synthetic demo data"></p>
 
 <p align="center"><img src="docs/images/native-sidebar.png" width="380" alt="Actual native Codex sidebar with numbered steps and @ entries"></p>
 
@@ -26,14 +36,16 @@ This is a real native-sidebar capture of the project's own development task. The
 Requirements: Python 3.10+, Codex CLI, and a desktop client supporting local MCP Apps. Node 20+ is only needed for tests.
 
 ```sh
-git clone https://github.com/liuzhengxiang666/codex-execution-panel.git
-cd codex-execution-panel
+git clone https://github.com/liuzhengxiang666/codex-beacon.git
+cd codex-beacon
 codex mcp add execution-panel -- python3 -B -u "$(pwd)/server.py" stdio
 codex plugin marketplace add .
 codex plugin add execution-panel@codex-execution-panel
 ```
 
-On Windows, use `./scripts/register-mcp.ps1` instead of the `mcp add` command. Reload the MCP connection or restart the client, then invoke the execution-panel skill or ask to open the current task's panel. Full [installation and troubleshooting](docs/installation.md) includes Windows manual commands, updates and uninstall instructions. The skill-only plugin reuses the separately registered MCP server.
+On Windows, use `./scripts/register-mcp.ps1` instead of the `mcp add` command. Reload the MCP connection or restart the client, then invoke the execution-panel skill or ask to open the current task's panel. Full [installation and troubleshooting](docs/installation.md) includes Windows manual commands, updates and uninstall instructions. The skill-and-hooks plugin reuses the separately registered MCP server.
+
+Choose the default with `python scripts/configure-panel.py --mode auto` (or `ask` / `manual`); Windows registration offers this choice interactively. Review the installed hooks in the CLI `/hooks` interface after installation or a hook update. Existing preferences are kept. The v0.5.3 no-mention, newly-started-task auto-opening path has not completed native end-to-end acceptance.
 
 ## Honest boundaries
 

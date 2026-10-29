@@ -4,7 +4,7 @@
 
 ## 提问题
 
-请通过 [Issues](https://github.com/liuzhengxiang666/codex-execution-panel/issues) 描述：操作系统、Python / Codex CLI / 桌面客户端版本、安装方式、复现步骤、预期与实际结果。涉及 @ 时，说明是原生草稿导入、复制，还是“未确认”。
+请通过 [Issues](https://github.com/liuzhengxiang666/codex-beacon/issues) 描述：操作系统、Python / Codex CLI / 桌面客户端版本、安装方式、复现步骤、预期与实际结果。涉及 @ 时，说明是原生草稿导入、复制，还是“未确认”。
 
 截图或最小复现请先去掉聊天内容、真实任务 ID、路径及凭据。不要上传 `state/`、SQLite、配置备份或完整 rollout 日志。
 
