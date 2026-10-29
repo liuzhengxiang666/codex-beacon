@@ -16,7 +16,7 @@ An open-source MCP sidebar for Codex: track plan progress, surface blockers, and
 - 生命周期 hooks 根据实际步骤提醒打开面板，覆盖开发、检索、跨聊天核对等多步任务；它们提供执行上下文，**不保证宿主强制展开右栏**。
 - 统一 Beacon 品牌，去掉面板底部的操作说明，保留简洁的节点与 @ 入口。
 
-<p align="center"><img src="docs/images/beacon-dark.png" width="420" alt="Codex Beacon v0.5.3 实际运行界面，使用独立合成演示任务"></p>
+<p align="center"><img src="docs/images/beacon-dark.jpg" width="420" alt="Codex Beacon v0.5.3 实际运行界面，使用独立合成演示任务"></p>
 
 *新版截图来自实际运行的隔离演示页面；不包含真实聊天数据，也不代表新的原生自动展开验收。*
 

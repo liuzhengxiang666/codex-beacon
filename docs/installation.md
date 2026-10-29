@@ -70,6 +70,8 @@ codex plugin list --marketplace codex-execution-panel --json
 
 重新加载 MCP；宿主没有重载入口时，关闭并重新打开客户端。当前已运行的 Python stdio 进程不会自动加载新的 Python 协议代码。重新打开面板实例可以读取最新 UI 资源。
 
+macOS / Linux 也需先运行 `python3 scripts/configure-panel.py --mode auto`（或 `ask` / `manual`），并在首次使用 hooks 前审核信任。hooks 的启动命令要求 `python` 指向 Python 3.10+；若本机只有 `python3`，请按本机 Python 安装方式提供 `python` 命令后再启用。
+
 ## 4. 首次设置与实际触发
 
 Windows 注册脚本会在首次运行时提供一次默认方式选择：多步任务自动开（推荐）、每次询问、手动开；已有设置会保留。也可显式运行 `./scripts/register-mcp.ps1 -PanelMode auto`。其他平台或以后更改设置：
