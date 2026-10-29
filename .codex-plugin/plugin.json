@@ -1,0 +1,12 @@
+{
+  "name": "execution-panel",
+  "version": "0.5.1",
+  "description": "Track plan progress in a Codex sidebar and reference any step in the current chat with @.",
+  "skills": "./skills/",
+  "requires_local_executor": true,
+  "interface": {
+    "displayName": "执行面板",
+    "shortDescription": "查看执行进度，@ 任意节点继续协作",
+    "defaultPrompt": ["打开当前任务的执行面板", "修改第 3 项，并保留计划版本", "第 3 项完成后停下，等待我验收"]
+  }
+}

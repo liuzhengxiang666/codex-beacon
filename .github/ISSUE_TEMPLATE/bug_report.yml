@@ -1,0 +1,27 @@
+name: Bug / 兼容性反馈
+description: 提交可复现问题，不要上传私人日志或状态库。
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment / 环境
+      description: OS、Python、Codex CLI、桌面客户端版本及安装方式。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps / 复现步骤
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual / 预期与实际
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Redacted evidence / 脱敏截图或合成复现
+      description: 原生右栏、复制或草稿“未确认”？请勿上传数据库、配置、完整聊天日志或真实任务 ID。

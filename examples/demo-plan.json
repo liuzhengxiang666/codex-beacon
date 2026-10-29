@@ -1,0 +1,9 @@
+{
+  "title": "发布一个任务看板",
+  "nodes": [
+    {"id": "scope", "title": "确认需求与验收标准", "status": "completed", "summary": "明确任务列表、状态筛选和保存行为。", "acceptance": "筛选不丢失内容，刷新后任务仍在。", "dependsOn": []},
+    {"id": "interface", "title": "实现列表与筛选交互", "status": "in_progress", "summary": "正在完善空状态和键盘操作。", "acceptance": "创建、筛选和编辑均可用。", "dependsOn": ["scope"]},
+    {"id": "storage", "title": "验证本地存储与恢复", "status": "in_progress", "summary": "独立验证保存和恢复逻辑。", "acceptance": "数据持久化且不会覆盖已有任务。", "dependsOn": ["scope"]},
+    {"id": "acceptance", "title": "验收界面并记录依据", "status": "pending", "summary": "检查实际界面、窄窗口与回归结果。", "acceptance": "实际截图与测试结果一致。", "dependsOn": ["interface", "storage"]}
+  ]
+}

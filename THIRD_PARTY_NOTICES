@@ -1,0 +1,29 @@
+# Codex Execution Panel third-party notices
+
+assets/mcp-app-bridge.js is adapted from icesixgod/codex-trajectory, commit d19ffe2ede38ccd07c02da1c79b1fea1be1560ef. Local modifications adapt native initialization, compatibility, read-only refresh and capability-gated draft export. Draft export fixes target=active and send=false; no automatic message submission is provided.
+Source: https://github.com/icesixgod/codex-trajectory
+The bridge is distributed under the following license. Other UI code is newly written; no DeepSeek Harness UI is included.
+
+MIT License
+
+Copyright (c) 2026 icesixgod
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Design and lifecycle research also references hoangsonww/Claude-Code-Agent-Monitor (MIT), commit 3cb22ae4a4e2ca31145351e1d73e05d0ff41f2dc. Its task-progress implementation is not copied.

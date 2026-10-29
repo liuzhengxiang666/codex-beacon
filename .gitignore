@@ -1,0 +1,22 @@
+# Local conversations, state, credentials, caches and development captures
+/state/
+/work/
+/output/
+/outputs/
+/dist/
+/plugin-cache/
+/.codex/
+.env
+.env.*
+!.env.example
+*.sqlite*
+*.db
+*.jsonl
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.DS_Store
+Thumbs.db
